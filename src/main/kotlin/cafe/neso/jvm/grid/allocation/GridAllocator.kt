@@ -1,4 +1,4 @@
-package cafe.neso.util.jvm.grid.allocation
+package cafe.neso.jvm.grid.allocation
 
 import cafe.neso.util.core.extension.Bool
 import java.lang.Math.floor

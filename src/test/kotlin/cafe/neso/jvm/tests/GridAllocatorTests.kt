@@ -1,6 +1,6 @@
-package test
+package cafe.neso.jvm.tests
 
-import cafe.neso.util.jvm.grid.allocation.GridAllocator
+import cafe.neso.jvm.grid.allocation.GridAllocator
 import org.junit.Test
 
 /**
