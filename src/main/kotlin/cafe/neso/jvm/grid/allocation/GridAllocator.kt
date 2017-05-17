@@ -1,6 +1,6 @@
 package cafe.neso.jvm.grid.allocation
 
-import cafe.neso.util.core.extension.Bool
+import cafe.neso.core.extension.Bool
 import java.lang.Math.floor
 import kotlin.coroutines.experimental.buildSequence
 

@@ -54,6 +54,8 @@ allprojects {
     maven { url 'https://jitpack.io' }
   }
 
+  jar.enabled = false
+
   shadowJar {
     configurations = [project.configurations.compile]
 
@@ -63,13 +65,16 @@ allprojects {
 
     from("$projectDir/src/main/templates") {
       expand project: project
+
+      if (!isDirty) {
+        exclude 'src'
+      }
     }
 
-    from("$buildDir/META-INF") {
-      include 'LICENSE'
-      include 'README.md'
+    from("$projectDir/src/main/templates/META-INF") {
+      into "$projectDir"
 
-      into projectDir
+      expand project: project
     }
 
     manifest.attributes 'Specification-Title': project.name,
@@ -84,6 +89,18 @@ allprojects {
   }
 }
 
+task injectProperties(type: Copy) {
+  from "$projectDir/core/src/main/templates/src"
+  from "$projectDir/src/main/templates/src"
+  into "$buildDir/generated-src"
+
+  expand project: project
+}
+
+tasks.build.dependsOn 'shadowJar'
+tasks.compileJava.dependsOn 'injectProperties'
+tasks.compileKotlin.dependsOn 'injectProperties'
+
 dependencies {
   compile 'org.jetbrains.kotlin:kotlin-stdlib-jre8'
   compile 'org.jetbrains.kotlin:kotlin-reflect'
@@ -97,11 +114,17 @@ sourceSets {
   main {
     java { srcDirs += 'core/src/main/java' }
     kotlin { srcDirs += 'core/src/main/kotlin' }
+
+    java { srcDirs += "$buildDir/generated-src/main/java" }
+    kotlin { srcDirs += "$buildDir/generated-src/main/kotlin" }
   }
 
   test {
     java { srcDirs += 'core/src/test/java' }
     kotlin { srcDirs += 'core/src/test/kotlin' }
+
+    java { srcDirs += "$buildDir/generated-src/test/java" }
+    kotlin { srcDirs += "$buildDir/generated-src/test/kotlin" }
   }
 }
 

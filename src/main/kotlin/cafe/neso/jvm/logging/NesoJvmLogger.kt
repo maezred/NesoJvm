@@ -1,7 +1,7 @@
-package cafe.neso.util.jvm.logging
+package cafe.neso.jvm.logging
 
-import cafe.neso.util.core.extension.Bool
-import cafe.neso.util.core.logging.NesoLogger
+import cafe.neso.core.extension.Bool
+import cafe.neso.core.logging.NesoLogger
 import java.util.logging.Level.*
 import java.util.logging.Logger
 
