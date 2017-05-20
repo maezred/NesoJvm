@@ -1,5 +1,11 @@
 package cafe.neso.jvm.grid.allocation
 
+import cafe.neso.core.extension.Bool
+import cafe.neso.core.extension.settings
+import cafe.neso.core.logging.testAll
+import cafe.neso.core.settings.SettingsInterface
+import cafe.neso.core.settings.delegate.prop
+
 /**
  * Created by moltendorf on 2017-05-04.
  */
@@ -23,7 +29,6 @@ data class Allocation internal constructor(val gridX: Int, val gridZ: Int, val a
   val layer: Int
 
   init {
-
     if (allocator.odd) {
       diameter = radius*2 + 1
       layer = radius
@@ -73,3 +78,5 @@ data class Allocation internal constructor(val gridX: Int, val gridZ: Int, val a
     }
   }
 }
+
+
