@@ -1,11 +1,5 @@
 package cafe.neso.jvm.grid.allocation
 
-import cafe.neso.core.extension.Bool
-import cafe.neso.core.extension.settings
-import cafe.neso.core.logging.testAll
-import cafe.neso.core.settings.SettingsInterface
-import cafe.neso.core.settings.delegate.prop
-
 /**
  * Created by moltendorf on 2017-05-04.
  */
